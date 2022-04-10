@@ -153,6 +153,20 @@ textView.setTextColor(colorSelector {
  })
 ```
 
-### 5. todo
-接下来准备实现 bitmap.xml
-...
+### 5. bitmap.xml 图片的替代法
+
+ - 旧写法 - bitmap.xml
+```xml
+<?xml version="1.0" encoding="utf-8"?>
+<bitmap xmlns:android="http://schemas.android.com/apk/res/android"
+    android:tint="@color/white"
+    android:src="@drawable/icon_setting"/>
+```
+
+ - 新写法 - kotlin
+```kotlin
+bitmap {
+    src = R.drawable.icon_setting
+    tint = Color.WHITE
+}
+```
