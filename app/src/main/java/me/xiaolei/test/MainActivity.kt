@@ -5,6 +5,7 @@ import android.graphics.Color
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.TypedValue
+import android.view.View
 import android.widget.TextView
 import me.xiaolei.dropshapexml.*
 
@@ -15,6 +16,8 @@ class MainActivity : AppCompatActivity()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         val textView = findViewById<TextView>(R.id.textView)
+        val bitmapView = findViewById<View>(R.id.bitmap_view)
+
         // 普通背景
         val normal = shape {
             shape = RECTANGLE
@@ -62,6 +65,12 @@ class MainActivity : AppCompatActivity()
                 color = Color.GREEN
             }
         })
+        
+        // 设置bitmap
+        bitmapView.background = bitmap {
+            src = R.drawable.icon_setting
+            tint = Color.RED
+        }
     }
 }
 

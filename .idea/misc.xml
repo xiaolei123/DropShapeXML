@@ -4,11 +4,13 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="../../../../layout/custom_preview.xml" value="0.32135416666666666" />
+        <entry key="app/src/main/res/drawable/bitmap_test.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/layer_list_test.xml" value="0.1865" />
         <entry key="app/src/main/res/drawable/selector.xml" value="0.182" />
         <entry key="app/src/main/res/drawable/selector_test.xml" value="0.1795" />
         <entry key="app/src/main/res/drawable/shape_test.xml" value="0.21" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.27447916666666666" />
+        <entry key="app/src/main/res/mipmap-anydpi-v26/ic_launcher.xml" value="0.182" />
       </map>
     </option>
   </component>

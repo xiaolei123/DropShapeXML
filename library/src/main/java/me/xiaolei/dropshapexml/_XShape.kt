@@ -2,9 +2,13 @@ package me.xiaolei.dropshapexml
 
 import android.content.Context
 import android.content.res.ColorStateList
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.graphics.drawable.BitmapDrawable
 import android.graphics.drawable.GradientDrawable
 import android.graphics.drawable.LayerDrawable
 import android.graphics.drawable.StateListDrawable
+import me.xiaolei.dropshapexml.bitmap.BitmapEdition
 import me.xiaolei.dropshapexml.layer_list.LayerEdition
 import me.xiaolei.dropshapexml.selector.color.ColorSelectorEdition
 import me.xiaolei.dropshapexml.selector.drawable.DrawableSelectorEdition
@@ -48,12 +52,35 @@ fun Context.colorSelector(block: ColorSelectorEdition.() -> Unit): ColorStateLis
 }
 
 /**
- * 层图
+ * 用来代替layer_list.xml的
  */
 fun Context.layerList(block: LayerEdition.() -> Unit): LayerDrawable
 {
     return LayerEdition(this).apply(block).drawable()
 }
+
+/**
+ * 用来代替bitmap.xml的
+ */
+fun Context.bitmap(block: BitmapEdition.() -> Unit): BitmapDrawable
+{
+    val edition = BitmapEdition().apply(block)
+    val resource = this.resources
+    val bitmap = edition.src?.let {
+        BitmapFactory.decodeResource(resource, it)
+    } ?: Bitmap.createBitmap(1, 1, Bitmap.Config.ARGB_8888)
+    val drawable = BitmapDrawable(resource, bitmap)
+    edition.antialias?.let { drawable.setAntiAlias(it) }
+    edition.dither?.let { drawable.setDither(it) }
+    edition.filter?.let { drawable.isFilterBitmap = it }
+    edition.tiltMode?.let { drawable.setTileModeXY(it, it) }
+    edition.gravity?.let { drawable.gravity = it }
+    edition.tint?.let { drawable.setTint(it) }
+    edition.tintMode?.let { drawable.setTintMode(it) }
+    edition.mipMap?.let { drawable.setMipMap(it) }
+    return drawable
+}
+
 
 // 图像类型
 val OVAL = Shape.OVAL
